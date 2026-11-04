@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Manage student records with the EduPortal student management application."
+    />
+    <title>EduPortal | Student Records</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="/">EduPortal</a>
+        <span class="header-label">Student Management</span>
+      </div>
+    </header>
+
+    <main class="container main-content">
+      <section class="page-heading" aria-labelledby="page-title">
+        <p class="eyebrow">COLLEGE STUDENT DIRECTORY</p>
+        <h1 id="page-title">Student records</h1>
+        <p>Add, find, update, and remove student records.</p>
+      </section>
+
+      <section class="panel" aria-labelledby="add-title">
+        <h2 id="add-title">Add a student</h2>
+        <form id="add-student-form" class="student-form">
+          <label>
+            Roll number
+            <input name="rollNumber" type="number" min="1" step="1" required />
+          </label>
+          <label>
+            Student name
+            <input name="name" type="text" maxlength="100" required />
+          </label>
+          <label>
+            Department
+            <input name="department" type="text" maxlength="100" required />
+          </label>
+          <label>
+            Age
+            <input name="age" type="number" min="1" max="120" step="1" required />
+          </label>
+          <label>
+            Marks (0–100)
+            <input name="marks" type="number" min="0" max="100" step="0.01" required />
+          </label>
+          <button class="button" type="submit">Add student</button>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="search-title">
+        <h2 id="search-title">Search by roll number</h2>
+        <form id="search-form" class="search-form">
+          <label class="sr-only" for="search-roll-number">Roll number</label>
+          <input
+            id="search-roll-number"
+            name="rollNumber"
+            type="number"
+            min="1"
+            step="1"
+            placeholder="Enter roll number"
+            required
+          />
+          <button class="button" type="submit">Search</button>
+          <button class="button button-outline" id="show-all" type="button">Show all students</button>
+        </form>
+      </section>
+
+      <p class="status" id="status-message" role="status" aria-live="polite"></p>
+
+      <section class="panel records-panel" aria-labelledby="records-title">
+        <div class="records-heading">
+          <div>
+            <h2 id="records-title">Student list</h2>
+            <p id="record-count">Loading records...</p>
+          </div>
+          <button class="button button-outline refresh-button" id="refresh" type="button">
+            Refresh
+          </button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Roll no.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Department</th>
+                <th scope="col">Age</th>
+                <th scope="col">Marks</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="student-rows"></tbody>
+          </table>
+          <p class="empty-state" id="empty-state" hidden>No student records to display.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-content">
+        <span>EduPortal · Student Management Practical</span>
+        <span>CollegeDB / students</span>
+      </div>
+    </footer>
+  </body>
+</html>
